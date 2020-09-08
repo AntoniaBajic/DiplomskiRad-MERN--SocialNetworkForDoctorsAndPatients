@@ -12,9 +12,20 @@ const ChatSchema = new Schema({
   text: {
     type: String,
   },
+  email: {
+    type: String,
+  },
   fileUploads: {
     type: String,
   },
+  emails: [
+    {
+      user: {
+        type: Schema.Types.ObjectId,
+        ref: 'users',
+      },
+    },
+  ],
   message: [
     {
       user: {
@@ -28,15 +39,15 @@ const ChatSchema = new Schema({
       name: {
         type: String,
       },
-      chatRoomId: {
-        type: String,
-      },
       date: {
         type: Date,
         default: Date.now,
       },
     },
   ],
+  chatRoomId: {
+    type: String,
+  },
   date: {
     type: Date,
     default: Date.now,

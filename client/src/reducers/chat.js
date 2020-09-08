@@ -3,6 +3,9 @@ import {
   GET_MESSAGE,
   MESSAGE_ERROR,
   ADD_MESSAGE,
+  SET_EMAIL,
+  GET_EMAIL,
+  EMAIL_ERROR,
 } from '../actions/types';
 
 const initialState = {
@@ -11,6 +14,8 @@ const initialState = {
   loading: true,
   chatRoomId: null,
   error: {},
+  emails: [],
+  clickedEmail: null,
   doctor: localStorage.getItem('doctor'),
 };
 
@@ -41,7 +46,23 @@ export default function (state = initialState, action) {
         doctor: localStorage.getItem('doctor'),
       };
 
+    case SET_EMAIL:
+      return {
+        ...state,
+        clickedEmail: payload,
+        loading: false,
+        doctor: localStorage.getItem('doctor'),
+      };
+    case GET_EMAIL:
+      return {
+        ...state,
+        clickedEmail: payload,
+        loading: false,
+        doctor: localStorage.getItem('doctor'),
+      };
+
     case MESSAGE_ERROR:
+    case EMAIL_ERROR:
       return {
         ...state,
         error: payload,

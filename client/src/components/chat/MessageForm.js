@@ -1,30 +1,30 @@
-import React, { useState, Fragment } from 'react';
+import React, { useState, Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addMessage } from '../../actions/chat';
+import { addMessage, getMessages } from '../../actions/chat';
 
-const MessageForm = ({ addMessage }) => {
-  const [text, setText] = useState('');
-  // const [chatRoomId, setChatRoomId] = useState('1');
-  // const [filename, setFilename] = useState('Choose File');
+const MessageForm = ({
+  addMessage,
+  getMessages,
+  auth: { user },
+  chat: { chatRoomId },
+}) => {
+  const [text, setText] = useState('1');
+  // const [chatRoomId, setChatRoomId] = useState('');
+  const myEmail = user.email;
+  const otherEmail = 'ivo@fesb.hr';
+  const sortedMails = [myEmail, otherEmail].sort((a, b) => a.localeCompare(b));
+  const newChatroomId = sortedMails[0] + '/' + sortedMails[1];
 
-  // const onChange = (e) => {
-  //   setFile(e.target.files[0]);
-  //   setFilename(e.target.files[0].name);
-  // };
+  console.log(newChatroomId);
 
-  // const onSubmit = async (e) => {
-  //   e.preventDefault();
-  //   const formData = new FormData();
-  //   formData.append('file', file);
-  // };
+  useEffect(() => {
+    getMessages(newChatroomId);
+  }, [getMessages, newChatroomId]);
 
   return (
     <Fragment>
-      <form
-        id='chat-form'
-        // onSubmit={onSubmit}
-      >
+      <form id='chat-form'>
         <input
           id='msg'
           type='text'
@@ -34,19 +34,15 @@ const MessageForm = ({ addMessage }) => {
           required
           autoComplete='off'
         />
-        {/* <input type='file' name='file' id='file' onChange={onChange} /> */}
-
         <button
           className='btn'
           onClick={(e) => {
             e.preventDefault();
             addMessage({
               text,
-              // chatRoomId,
-              // , file
+              chatRoomId: newChatroomId,
             });
-            // setText('');
-            // setFile('');
+            setText(' ');
           }}
         >
           <i className='fas fa-paper-plane'></i> Send
@@ -55,9 +51,16 @@ const MessageForm = ({ addMessage }) => {
     </Fragment>
   );
 };
-
 MessageForm.propTypes = {
   addMessage: PropTypes.func.isRequired,
+  getMessages: PropTypes.func.isRequired,
+  chat: PropTypes.object.isRequired,
 };
+const mapStateToProps = (state) => ({
+  chat: state.chat,
+  auth: state.auth,
+});
 
-export default connect(null, { addMessage })(MessageForm);
+export default connect(mapStateToProps, { addMessage, getMessages })(
+  MessageForm
+);

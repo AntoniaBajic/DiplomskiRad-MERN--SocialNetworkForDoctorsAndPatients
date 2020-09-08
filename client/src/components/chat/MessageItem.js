@@ -6,11 +6,12 @@ const MessageItem = ({ chat: { _id, text, name, user, date } }) => (
   <Fragment>
     <div className='message'>
       <p className='meta'>
-        {name}{' '}
+        {name}
         <span>
           <Moment format='DD/MM/YYYY  h:mm a'>{date}</Moment>
         </span>
       </p>
+
       <p className='text'>{text}</p>
     </div>
   </Fragment>

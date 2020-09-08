@@ -31,3 +31,7 @@ export const MESSAGE_ERROR = 'MESSAGE_ERROR';
 
 export const SEARCH_LOGS = 'SEARCH_LOGS';
 export const LOGS_ERROR = 'LOGS_ERROR';
+
+export const SET_EMAIL = 'SET_EMAIL';
+export const EMAIL_ERROR = 'EMAIL_ERROR';
+export const GET_EMAIL = 'GET_EMAIL';

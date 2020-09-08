@@ -23,7 +23,7 @@ const ProfileItem = ({
         </p>
 
         <p>
-          <i class='fas fa-envelope text-primary'></i> {email}
+          <i className='fas fa-envelope text-primary'></i> {email}
         </p>
         <p className='my-1'>{locationTown && <span>{locationTown}</span>}</p>
         <Link to={`/profile/${_id}`} className='button button-primary'>

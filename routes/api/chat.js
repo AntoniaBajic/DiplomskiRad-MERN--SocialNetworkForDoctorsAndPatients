@@ -55,8 +55,10 @@ router.post(
         text: req.body.text,
         name: user.name,
         user: req.user.id,
-        // chatRoomId: req.params.chatRoomId,
+        email: user.email,
+        chatRoomId: req.body.chatRoomId,
       });
+      console.error(newChat);
       const chat = await newChat.save();
       res.json(chat);
     } catch (err) {
