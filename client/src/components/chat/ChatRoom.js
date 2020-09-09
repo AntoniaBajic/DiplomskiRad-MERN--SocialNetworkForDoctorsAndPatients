@@ -16,7 +16,8 @@ const ChatRoom = ({
   auth: { user, users },
   chat: { _id, text, name, messages, chatRoomId, clickedEmail, loading },
 }) => {
-  const [clickedUsersEmail, setClickedEmail] = useState('');
+  // const [clickedUsersEmail, setClickedEmail] = useState('');
+
   // console.log(clickedUsersEmail);
 
   useEffect(() => {
@@ -34,7 +35,7 @@ const ChatRoom = ({
             <i className='fas fa-user-md text-dark'></i>{' '}
             <i className='fas fa-heartbeat text-dark'></i> eZdravstvo Chat{' '}
           </h1>
-          <h3> ChatRoom {messages[0].chatRoomId}</h3>
+          {/* <h3> ChatRoom {messages[0].chatRoomId}</h3> */}
           <button type='submit' className='btn'>
             <Link to='/chat'> Leave Room</Link>
           </button>

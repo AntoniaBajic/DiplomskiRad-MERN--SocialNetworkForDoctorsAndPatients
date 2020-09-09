@@ -15,7 +15,7 @@ const initialState = {
   chatRoomId: null,
   error: {},
   emails: [],
-  clickedEmail: null,
+  clickedEmail: { clickedEmail: null },
   doctor: localStorage.getItem('doctor'),
 };
 

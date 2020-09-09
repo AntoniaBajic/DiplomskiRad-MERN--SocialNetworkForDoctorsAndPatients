@@ -143,14 +143,14 @@ router.post(
     try {
       const user = await User.findById(req.user.id).select('-password');
 
-      const newChat = new Chat({
+      const newChat2 = new Chat({
         name: user.name,
         user: req.user.id,
         email: user.email,
         clickedEmail: req.body.clickedEmail,
       });
-      console.error(newChat);
-      const chat = await newChat.save();
+      console.error(newChat2);
+      const chat = await newChat2.save();
       res.json(chat);
     } catch (err) {
       console.error(err.message);
@@ -164,11 +164,11 @@ router.post(
 //@access   Private
 router.get('/chat-room/email', auth, async (req, res) => {
   try {
-    const message = await Chat.find().sort({ date: 1 });
-    if (!message) {
+    const email = await Chat.find().sort({ date: 1 });
+    if (!email) {
       return res.status(404).json({ msg: 'Email not found' });
     }
-    res.json(message);
+    res.json(email);
   } catch (err) {
     console.error(err.message);
     if (err.kind === 'ObjectId') {

@@ -6,21 +6,27 @@ import { addMessage, getMessages, getEmail } from '../../actions/chat';
 const MessageForm = ({
   addMessage,
   getMessages,
+  getEmail,
   auth: { user },
   chat: { chatRoomId, clickedEmail },
 }) => {
   const [text, setText] = useState('');
   // const [chatRoomId, setChatRoomId] = useState('');
   const myEmail = user.email;
-  const otherEmail = 'ivo@fesb.hr';
+  let otherEmail = user.email;
+  if (clickedEmail.clickedEmail !== null) {
+    otherEmail = clickedEmail.clickedEmail;
+  }
   const sortedMails = [myEmail, otherEmail].sort((a, b) => a.localeCompare(b));
   const newChatroomId = sortedMails[0] + '/' + sortedMails[1];
 
   console.log(newChatroomId);
+  console.log(clickedEmail.clickedEmail);
 
   useEffect(() => {
     getMessages(newChatroomId);
-  }, [getMessages, newChatroomId]);
+    getEmail();
+  }, [getMessages, newChatroomId, getEmail]);
 
   return (
     <Fragment>
@@ -61,6 +67,6 @@ const mapStateToProps = (state) => ({
   auth: state.auth,
 });
 
-export default connect(mapStateToProps, { addMessage, getMessages })(
+export default connect(mapStateToProps, { addMessage, getMessages, getEmail })(
   MessageForm
 );
