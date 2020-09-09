@@ -92,8 +92,7 @@ export const addEmail = (email) => async (dispatch) => {
     },
   };
   try {
-    const res = await axios.post('/api/chat/chat-room', email, config);
-
+    const res = await axios.post('/api/chat/chat-room/email', email, config);
     dispatch({
       type: SET_EMAIL,
       payload: res.data,
@@ -101,15 +100,15 @@ export const addEmail = (email) => async (dispatch) => {
   } catch (err) {
     dispatch({
       type: EMAIL_ERROR,
-      // payload: { msg: err.response.statusText, status: err.response.status },
+      payload: { msg: err.response.statusText, status: err.response.status },
     });
   }
 };
 
 // Get email
-export const getEmail = (email) => async (dispatch) => {
+export const getEmail = () => async (dispatch) => {
   try {
-    const res = await axios.get(`/api/chat/chat-room/${email}`);
+    const res = await axios.get('/api/chat/chat-room/email');
 
     dispatch({
       type: GET_EMAIL,

@@ -18,14 +18,9 @@ const ChatSchema = new Schema({
   fileUploads: {
     type: String,
   },
-  emails: [
-    {
-      user: {
-        type: Schema.Types.ObjectId,
-        ref: 'users',
-      },
-    },
-  ],
+  clickedEmail: {
+    type: String,
+  },
   message: [
     {
       user: {

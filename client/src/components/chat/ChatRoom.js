@@ -17,8 +17,8 @@ const ChatRoom = ({
   chat: { _id, text, name, messages, chatRoomId, clickedEmail, loading },
 }) => {
   const [clickedUsersEmail, setClickedEmail] = useState('');
+  // console.log(clickedUsersEmail);
 
-  console.log(clickedUsersEmail);
   useEffect(() => {
     getMessages();
     getUsers();
@@ -54,10 +54,14 @@ const ChatRoom = ({
               {users.map((user) => {
                 return (
                   <li
-                    onClick={
-                      () => alert(user.email)
-                      // setClickedEmail(user.email)
-                    }
+                    onClick={(e) => {
+                      e.preventDefault();
+                      // alert(user.email)
+                      // setClickedEmail(user.email),
+                      addEmail({
+                        clickedEmail: user.email,
+                      });
+                    }}
                   >
                     {user.name}
                   </li>

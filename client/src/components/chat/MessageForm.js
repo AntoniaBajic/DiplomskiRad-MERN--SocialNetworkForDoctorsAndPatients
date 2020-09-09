@@ -1,15 +1,15 @@
 import React, { useState, Fragment, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { addMessage, getMessages } from '../../actions/chat';
+import { addMessage, getMessages, getEmail } from '../../actions/chat';
 
 const MessageForm = ({
   addMessage,
   getMessages,
   auth: { user },
-  chat: { chatRoomId },
+  chat: { chatRoomId, clickedEmail },
 }) => {
-  const [text, setText] = useState('1');
+  const [text, setText] = useState('');
   // const [chatRoomId, setChatRoomId] = useState('');
   const myEmail = user.email;
   const otherEmail = 'ivo@fesb.hr';
