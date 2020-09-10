@@ -30,6 +30,7 @@ const MessageForm = ({
 
   return (
     <Fragment>
+      <h5> ChatRoom: {newChatroomId}</h5>
       <form id='chat-form'>
         <input
           id='msg'

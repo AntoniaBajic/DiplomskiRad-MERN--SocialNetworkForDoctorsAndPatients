@@ -35,3 +35,8 @@ export const LOGS_ERROR = 'LOGS_ERROR';
 export const SET_EMAIL = 'SET_EMAIL';
 export const EMAIL_ERROR = 'EMAIL_ERROR';
 export const GET_EMAIL = 'GET_EMAIL';
+
+export const GET_FORUM_MESSAGES = 'GET_FORUM_MESSAGES';
+export const GET_FORUM_MESSAGE = 'GET_FORUM_MESSAGE';
+export const FORUM_MESSAGE_ERROR = 'FORUM_MESSAGE_ERROR';
+export const ADD_FORUM_MESSAGE = 'ADD_FORUM_MESSAGE';
