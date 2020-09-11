@@ -13,4 +13,4 @@ npm install
 ```
 npm run dev
 ```
-Link to heroku : https://e-zdravstvo.herokuapp.com/
+Link to heroku : https://e--zdravstvo.herokuapp.com/
